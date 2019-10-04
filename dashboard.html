@@ -42,7 +42,6 @@
                     <a href="#" class="nav-item nav-link active">Home</a>
                     <a href="#" class="nav-item nav-link">Profile</a>
                     <a href="#" class="nav-item nav-link">Settings</a>
-                    <a href="#" class="nav-item nav-link">Dashboard Options</a>
                 </div>
                 <div class="navbar-nav ml-auto">
                     <button class="btn btn-sm btn-outline-secondary">
@@ -136,10 +135,13 @@
                         </div>
                     </div>
 
-        <div style="width: 75%;">
-            <canvas id="canvas"></canvas>
-            <progress id="animationProgress" max="1" value="0" style="width: 100%"></progress>
-        </div>
+                    <div style="width: 75%;">
+                        <canvas id="canvas"></canvas>
+                        <progress id="animationProgress" max="1" value="0" style="width: 100%"></progress>
+                    </div>
+
+                <div class="container0">
+                </div>
 
                 </main>
             </div>
@@ -161,6 +163,7 @@
 
         <!-- Graphs -->
         <script>
+            // 1
             var progress = document.getElementById('animationProgress');
             var config = {
                 type: 'line',
@@ -217,9 +220,77 @@
                     }
                 }
             };
+            // 2
+            function createConfig(position) {
+            return {
+                type: 'line',
+                data: {
+                    labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
+                    datasets: [{
+                        label: 'Silica Sand',
+                        borderColor: window.chartColors.red,
+                        backgroundColor: window.chartColors.red,
+                        data: [10, 30, 46, 2, 8, 50, 0],
+                        fill: false,
+                    }, {
+                        label: 'Water',
+                        borderColor: window.chartColors.blue,
+                        backgroundColor: window.chartColors.blue,
+                        data: [7, 49, 46, 13, 25, 30, 22],
+                        fill: false,
+                    }, {
+                        label: 'Aggregates',
+                        borderColor: window.chartColors.green,
+                        backgroundColor: window.chartColors.green,
+                        data: [4, 32, 21, 18, 23, 35, 10],
+                        fill: false,
+                    }, {
+                        label: 'Cementation',
+                        borderColor: window.chartColors.orange,
+                        backgroundColor: window.chartColors.orange,
+                        data: [32, 27, 26, 27, 38, 40, 36],
+                        fill: false,
+                    }, {
+                        label: 'AdMixture',
+                        borderColor: window.chartColors.yellow,
+                        backgroundColor: window.chartColors.yellow,
+                        data: [18, 55, 40, 30, 35, 21, 40],
+                        fill: false,
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    title: {
+                        display: true,
+                        text: 'Materials Used: ' + position
+                    },
+                    tooltips: {
+                        position: position,
+                        mode: 'index',
+                        intersect: false,
+                    },
+                }
+            };
+        }
             window.onload = function() {
+                // 1
                 var ctx = document.getElementById('canvas').getContext('2d');
                 window.myLine = new Chart(ctx, config);
+
+            // 2
+            var container0 = document.querySelector('.container0');
+
+            ['nearest'].forEach(function(position) {
+                var div = document.createElement('div');
+
+                var canvas = document.createElement('canvas');
+                div.appendChild(canvas);
+                container0.appendChild(div);
+
+                var ctx = canvas.getContext('2d');
+                var config = createConfig(position);
+                new Chart(ctx, config);
+            });
             };
         </script>
     </body>
