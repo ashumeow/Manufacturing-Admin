@@ -9,6 +9,7 @@
         <title>Responsive Manufacturing Admin Dashboard</title>
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
         <link rel="stylesheet" href="css/dashboard2.css">
+        <link href="css/dataTables.bootstrap4.css" rel="stylesheet">
         <style>
             canvas {
                 -moz-user-select: none;
@@ -125,13 +126,74 @@
         
                 <main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
                     <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3 border-bottom">
-                        <h1 class="h2">Manufacturing Dashboard</h1>
                         <div class="btn-toolbar mb-2 mb-md-0">
                             <button class="btn btn-sm btn-outline-secondary">
-                                <span data-feather="calendar"></span> Real-Time View
+                                <span data-feather="calendar"></span> This Month
                             </button>
                         </div>
                     </div>
+
+                    <div class="card mb-3">
+                      <div class="card-header">
+                        <i class="fas fa-table"></i>
+                        Shipment Status + Payment Status</div>
+                      <div class="card-body">
+                        <div class="table-responsive">
+                          <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                            <thead>
+                             <tr>
+                                <th>Shipment ID</th>
+                                <th>Type</th>
+                                <th>Customer Name</th>
+                                <th>Country</th>
+                                <th>Delivery Mode</th>
+                                <th>Item Name</th>
+                                <th>Item Type</th>
+                                <th>Shipment Status</th>
+                                <th>Payment Type</th>
+                                <th>Credit made</th>
+                                <th>Balance Amount</th>
+                                <th>Payment Status</th>
+                                <th>Reconciliation Status</th>
+                                <th>Details</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              <tr>
+                                <td>12345</td>
+                                <td>Ground, Truck</td>
+                                <td>Edinburgh LLC</td>
+                                <td>UAE</td>
+                                <td>Local</td>
+                                <td>MIX-23456</td>
+                                <td>Concrete</td>
+                                <th>Delivery in-process</th>
+                                <td>Bank Transfer</td>
+                                <td>$2000</td>
+                                <td>$1500</td>
+                                <td>Cheque for bank amount received</td>
+                                <td>Yet to Verify</td>
+                                <td><button type="button" class="btn btn-raised btn-secondary">View</button></td>
+                              </tr>
+                              <tr>
+                                <td>12342</td>
+                                <td>Air</td>
+                                <td>Milton LLC</td>
+                                <td>Kuwait</td>
+                                <td>International</td>
+                                <td>AGG-33456</td>
+                                <td>Aggregates</td>
+                                <th>In Air, yet to reach warehouse</th>
+                                <td>Bank Transfer</td>
+                                <td>$3000</td>
+                                <td>$2000</td>
+                                <td>$1000 Balance cheque provided. Remaining $1000 will be provided upon receiving</td>
+                                <td>Yet to Verify</td>
+                                <td><button type="button" class="btn btn-raised btn-secondary">View</button></td>
+                              </tr>
+                            </tbody>
+                        </table>
+                    </div></div></div>
 
                 </main>
             </div>
@@ -150,5 +212,11 @@
         <script>
         feather.replace()
         </script>
+
+      <!-- Page level plugin JavaScript-->
+      <script src="js/jquery.dataTables.js"></script>
+      <script src="js/dataTables.bootstrap4.js"></script>
+      <!-- Demo scripts for this page-->
+      <script src="js/datatables-demo.js"></script>
     </body>
 </html>
