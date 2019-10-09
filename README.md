@@ -1,4 +1,4 @@
-Admin Dashboard for Manufacturing built using <a href="https://github.com/twbs/bootstrap">Bootstrap 4</a>.
+Admin Dashboard for Manufacturing built using <a href="https://github.com/twbs/bootstrap">Bootstrap 4</a> which also includes distribution and some more features.
 
 Concrete batching scenario applied as an example for the dashboard.
 
